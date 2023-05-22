@@ -1,12 +1,12 @@
 body {
-    background-image: url("backgroundImageMatrix.jpg");
+    background-image: url("../images/backgroundImageMatrix.jpeg");
     margin: 0;
     padding: 0;
 }
     
     
 #board {
-        background-color: rgb(68, 232, 22);
+       
         height: 100vh;
         position: relative; 
 }

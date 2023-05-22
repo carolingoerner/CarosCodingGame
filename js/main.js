@@ -13,28 +13,34 @@ class Brain {
     }
 // when i create a new instance of class Brain I will create a new div in the browser
     createDomElement(){
-        const brainElm=document.createElement("div");
+        this.domElement=document.createElement("div");
         // add content or modify
-        brainElm.id="brain";
-        brainElm.style.width=this.width+"vw";
-        brainElm.style.height=this.height +"vh";
-        brainElm.style.left=this.positionY+"vw";
-        brainElm.style.bottom=this.positionX +"vh";
-        brainElm.innerText="the Brain"
+        this.domElement.id="brain";
+        this.domElement.style.width=this.width+"vw";
+        this.domElement.style.height=this.height +"vh";
+        this.domElement.style.left=this.positionX+"vw";
+        this.domElement.style.bottom=this.positionX +"vh";
+        this.domElement.style.position="absolute";
+        this.domElement.style.backgroundColor= "blue";
+        this.domElement.style.backgroundImage= "url('../images/brain_light.png')";
+    
+        this.domElement.innerText="the Brain"
 // append to the dom:parentElm.appendChild()
 
 const parentElm=document.getElementById("board");
-parentElm.appendChild(brainElm);
+parentElm.appendChild(this.domElement);
     }
 
     // when brain moves to left/right
     moveLeft(){
-        this.positionX=this.PositionX-1; //modify the position
-        brainElm.style.bottom=this.positionX +"vh";
+        this.positionX=this.positionX-1; //modify the position
+        this.domElement.style.left=this.positionX +"vh";
+        console.log(this.positionX);
     }       
     moveRight(){
-        this.positionX=this.PositionX+1; //modify the position
-        brainElm.style.left=this.positionY+"vw";
+        this.positionX=this.positionX+1; //modify the position
+        this.domElement.style.left=this.positionX+"vh";
+        console.log(this.positionX);
 }
 }
 // instance of class Brain
@@ -53,5 +59,6 @@ document.addEventListener("keydown", (event) => {
         brain.moveRight();
     }
 })
+
 
 
