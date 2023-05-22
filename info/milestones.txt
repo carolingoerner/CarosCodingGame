@@ -1,0 +1,29 @@
+MVP: 
+brain eats code
+after reaching certain points -> win 
+price: html file produced and coming out of brain 
+feature: obstacles can contain right and wrong code
+
+Milestones
+
+Milestone1:
+[  ]    create player
+[  ]    create left/right movement for player
+[  ]    create background
+
+Milestone2:
+[  ]    obstacles appearing in UI
+[  ]    obstacles move down 
+
+Milestone3: 
+[  ]    collusion detection
+[  ]    brain increase? 
+
+Milestone4: 
+[  ]    winner sign, after certain amount of points
+[  ]    code coming out of the brain
+
+Milestone5: 
+[  ]    mix wrong code obstacles between good code
+[  ]    different sounds for collusion, win
+[  ]    prevent player from going otuside window
