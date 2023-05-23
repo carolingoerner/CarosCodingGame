@@ -7,23 +7,25 @@ feature: obstacles can contain right and wrong code
 Milestones
 
 Milestone1:
-[  ]    create player
-[  ]    create left/right movement for player
-[  ]    create background
+[ x ]    create player
+[ x ]    create left/right movement for player
+[ x ]    create background
 
 Milestone2:
-[  ]    obstacles appearing in UI
-[  ]    obstacles move down 
+[ x ]    obstacles appearing in UI
+[ x ]    obstacles move down 
 
 Milestone3: 
-[  ]    collusion detection
-[  ]    brain increase? 
+[ x ]    collusion detection
+[ x ]    mix wrong code obstacles between good code
 
 Milestone4: 
+[  ]    score window
 [  ]    winner sign, after certain amount of points
 [  ]    code coming out of the brain
 
+
 Milestone5: 
-[  ]    mix wrong code obstacles between good code
+[  ]    brain increase? 
 [  ]    different sounds for collusion, win
 [  ]    prevent player from going otuside window

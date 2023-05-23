@@ -6,13 +6,17 @@ body {
     
     
 #board {
-       
-        height: 100vh;
-        position: relative; 
+    height: 100vh;
+    position: relative; 
 }
     
 #player {
-        background-color: rgb(13, 30, 221);
-        position: absolute; 
+    background-color: rgb(13, 30, 221);
+    position: absolute; 
     
+}
+
+.obstacle{
+    background-image: url("../images/div.png");
+    position: absolute;
 }
