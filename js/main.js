@@ -70,9 +70,10 @@ class Obstacle {
         this.domElement.style.bottom = this.positionX + "vh";
         this.domElement.style.position = "absolute";
        
-        this.domElement.style.backgroundImage = `url('../images/${this.name}.png')`;
+        this.domElement.style.backgroundImage = `url('./images/${this.name}.png')`;
         this.domElement.style.backgroundSize = "contain"; // optimize image size
         this.domElement.style.backgroundRepeat = "no-repeat"; // obstacle disappears
+        this.domElement.style.overflow = "hidden";
         const parentElm = document.getElementById("board");
         parentElm.appendChild(this.domElement);
     }
