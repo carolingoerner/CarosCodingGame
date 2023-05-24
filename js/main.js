@@ -1,7 +1,7 @@
 class Brain {
     constructor() {
-        this.width = 29;
-        this.height = 27;
+        this.width = 21;
+        this.height = 30;
         this.positionX = 20 - this.width / 2;
         this.positionY = 0;
         this.score = 0
@@ -49,7 +49,7 @@ class Obstacle {
         this.height = 10;
         this.positionX = Math.random() * 100;
         this.positionY = 100;
-        this.imageArray = ["../images/ReferenceError.png","../images/let.png","../images/consoleLog.png","../images/brackets.png", "../images/move.png","../images/body.png","../images/classBrain.png", "../images/head.png", "../images/if.png", "../images/elseif.png", "../images/curlybrackets.png", "../images/const.png", "../images/constructor.png","../images/createDomElement.png","../images/function.png", "../images/SyntaxError.png"];
+        this.imageArray = ["./images/ReferenceError.png","./images/let.png","./images/consoleLog.png","./images/brackets.png", "./images/move.png","./images/body.png","./images/classBrain.png", "./images/head.png", "./images/if.png", "./images/elseif.png", "./images/curlybrackets.png", "./images/const.png", "./images/constructor.png","./images/createDomElement.png","./images/function.png", "./images/SyntaxError.png"];
         this.domElement = null;
         this.randomIndex = Math.round(Math.random() * this.imageArray.length);
         this.namesArray = ['ReferenceError', 'let', 'consoleLog', 'brackets', 'move', 'body', 'classBrain', 'head', 'if', 'elseif', 'curlyBrackets', 'const', 'constructor', 'createDomElement', 'function', 'syntaxError'];

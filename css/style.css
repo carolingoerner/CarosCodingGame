@@ -11,12 +11,17 @@ body {
 }
     
 #player {
-    background-color: rgb(13, 30, 221);
+    background-image: url("../images/brain.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute; 
+  }
     
-}
+    
 
 .obstacle{
     background-image: url("../images/div.png");
     position: absolute;
 }
+
