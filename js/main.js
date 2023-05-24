@@ -22,7 +22,6 @@ class Brain {
         this.domElement.style.left = this.positionX + "vw";
         this.domElement.style.bottom = this.positionX + "vh";
         this.domElement.style.position = "absolute";
-        this.domElement.style.backgroundImage = "url('../images/brain.png')";
 
         // append to the dom:parentElm.appendChild()
 
