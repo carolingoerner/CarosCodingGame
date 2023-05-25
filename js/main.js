@@ -6,9 +6,8 @@ class Brain {
     this.height = 25;
     this.positionX = 20 - this.width / 2;
     this.positionY = 0;
-    
+
     // store it in a property instead of const, so we declare it here instead of in methodcreateDomElement
-    // we store a ref to the dom element of the player
     this.domElement = null;
 
     // I want it to be created from the Dom
@@ -17,7 +16,7 @@ class Brain {
   // when i create a new instance of class Brain I will create a new div in the browser
   createDomElement() {
     this.domElement = document.createElement("div");
-    // add content or modify
+    
     this.domElement.id = "brain";
     this.domElement.style.width = this.width + "vw";
     this.domElement.style.height = this.height + "vh";
@@ -27,24 +26,21 @@ class Brain {
     this.domElement.style.backgroundSize = "contain";
 
     // append to the dom:parentElm.appendChild()
-
     const parentElm = document.getElementById("board");
     parentElm.appendChild(this.domElement);
   }
 
-  // when brain moves to left/right
   moveLeft() {
-    this.positionX = this.positionX - 3; //modify the position
+    this.positionX = this.positionX - 3;
     this.domElement.style.left = this.positionX + "vh";
     console.log(this.positionX);
   }
   moveRight() {
-    this.positionX = this.positionX + 3; //modify the position
+    this.positionX = this.positionX + 3; 
     this.domElement.style.left = this.positionX + "vh";
     console.log(this.positionX);
   }
 }
-
 class Obstacle {
   constructor() {
     this.width = 10;
@@ -108,7 +104,7 @@ class Obstacle {
 
     this.domElement.style.backgroundImage = `url('./images/${this.name}.png')`;
     this.domElement.style.backgroundSize = "contain"; // optimize image size
-    this.domElement.style.backgroundRepeat = "no-repeat"; 
+    this.domElement.style.backgroundRepeat = "no-repeat";
     const parentElm = document.getElementById("board");
     parentElm.appendChild(this.domElement);
   }
@@ -118,39 +114,38 @@ class Obstacle {
   }
 }
 class scoreDisplay {
-    constructor(){
+  constructor() {
     this.width = 200;
     this.height = 100;
     this.positionX = 20;
     this.positionY = 20;
-    
+
     this.domElement = null;
     this.createDomElement();
-   }
-   
-   createDomElement() {
-     this.domElement = document.createElement("div");
-     this.domElement.id = "score";
-     this.domElement.style.width = this.width + "px";
-     this.domElement.style.height = this.height + "px";
-     this.domElement.style.left = this.positionX + "px";
-     this.domElement.style.top = this.positionY + "px";
-     const parentElm = document.getElementById("board");
-     parentElm.appendChild(this.domElement);
-    }
+  }
+
+  createDomElement() {
+    this.domElement = document.createElement("div");
+    this.domElement.id = "score";
+    this.domElement.style.width = this.width + "px";
+    this.domElement.style.height = this.height + "px";
+    this.domElement.style.left = this.positionX + "px";
+    this.domElement.style.top = this.positionY + "px";
+    const parentElm = document.getElementById("board");
+    parentElm.appendChild(this.domElement);
+  }
 }
 
-// instance of class Brain - i create new div in browser when i create a new class brain
+//i create new div in browser when i create a new class brain
 const brain = new Brain();
 const obstaclesArr = []; //will store instances of the class obstacle
-const scoreTable = new scoreDisplay; 
+const scoreTable = new scoreDisplay();
 
 // create new Obstacle
 setInterval(() => {
   const newObstacle = new Obstacle();
   obstaclesArr.push(newObstacle);
   console.log(newObstacle, newObstacle.domElement.style.backgroundImage);
-
 }, 4000);
 
 // move all obstacles
@@ -164,17 +159,20 @@ setInterval(() => {
       obstaclesInstance.positionY < brain.positionY + brain.height &&
       obstaclesInstance.height + obstaclesInstance.positionY > brain.positionY
     ) {
-        if (obstaclesInstance.name === "ReferenceError" || obstaclesInstance.name === "SyntaxError") {
-            loosePoints(5);
-            obstaclesInstance.removeElement();
-            obstaclesArr.splice(index, 1);
-            updateScore();
-          } else {
-            earnPoints(5);
-            obstaclesInstance.removeElement();
-            obstaclesArr.splice(index, 1);
-            updateScore();
-          }
+      if (
+        obstaclesInstance.name === "ReferenceError" ||
+        obstaclesInstance.name === "SyntaxError"
+      ) {
+        loosePoints(5);
+        obstaclesInstance.removeElement();
+        obstaclesArr.splice(index, 1);
+        updateScore();
+      } else {
+        earnPoints(5);
+        obstaclesInstance.removeElement();
+        obstaclesArr.splice(index, 1);
+        updateScore();
+      }
       console.log(obstaclesArr);
     }
     endGame();
@@ -182,10 +180,10 @@ setInterval(() => {
 }, 100);
 
 // when user presses tab brain moves
-document.addEventListener("keydown", (event) => { //if user presses arrow left we call move left
-  if (event.code === "ArrowLeft") {  // if user presses arrowleft we call move left, if arrow right we call move right
+document.addEventListener("keydown", (event) => {
+  if (event.code === "ArrowLeft") {
     brain.moveLeft();
-  } else if (event.code === "ArrowRight") {
+} else if (event.code === "ArrowRight") {
     brain.moveRight();
   }
 });
@@ -202,20 +200,20 @@ function loosePoints(points) {
   return score;
 }
 function updateScore() {
-    console.log("update score")
-  // Update the score element in the HTML with the new value
+  console.log("update score");
   document.getElementById("score").innerHTML = score;
 }
 
+// show winnerPage
 const winnerPage = document.querySelector("#winnerPage");
 const scoreHtml = document.querySelector("#score");
-const boardGame =  document.querySelector("#board");
+const boardGame = document.querySelector("#board");
 
-function endGame(){
-   console.log(boardGame);
-    console.log(winnerPage);
-    if (score === 5){
-        winnerPage.style.display = "block"
-        boardGame.style.display = "none"
-    }
+function endGame() {
+  console.log(boardGame);
+  console.log(winnerPage);
+  if (score === 5) {
+    winnerPage.style.display = "block";
+    boardGame.style.display = "none";
+  }
 }
