@@ -20,12 +20,7 @@ Milestone3:
 [ x ]    mix wrong code obstacles between good code
 
 Milestone4: 
-[  ]    score window
-[  ]    winner sign, after certain amount of points
-[  ]    code coming out of the brain
+[ x ]    score window
+[ x ]    winner sign, after certain amount of points
+[ x ]    code coming out of the brain
 
-
-Milestone5: 
-[  ]    brain increase? 
-[  ]    different sounds for collusion, win
-[  ]    prevent player from going otuside window

@@ -210,9 +210,7 @@ const scoreHtml = document.querySelector("#score");
 const boardGame = document.querySelector("#board");
 
 function endGame() {
-  console.log(boardGame);
-  console.log(winnerPage);
-  if (score === 5) {
+  if (score === 50) {
     winnerPage.style.display = "block";
     boardGame.style.display = "none";
   }
