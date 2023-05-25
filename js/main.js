@@ -7,16 +7,14 @@ class Brain {
     this.positionX = 20 - this.width / 2;
     this.positionY = 0;
 
-    // store it in a property instead of const, so we declare it here instead of in methodcreateDomElement
     this.domElement = null;
 
-    // I want it to be created from the Dom
     this.createDomElement();
   }
-  // when i create a new instance of class Brain I will create a new div in the browser
+
   createDomElement() {
     this.domElement = document.createElement("div");
-    
+
     this.domElement.id = "brain";
     this.domElement.style.width = this.width + "vw";
     this.domElement.style.height = this.height + "vh";
@@ -25,7 +23,6 @@ class Brain {
     this.domElement.style.position = "absolute";
     this.domElement.style.backgroundSize = "contain";
 
-    // append to the dom:parentElm.appendChild()
     const parentElm = document.getElementById("board");
     parentElm.appendChild(this.domElement);
   }
@@ -36,7 +33,7 @@ class Brain {
     console.log(this.positionX);
   }
   moveRight() {
-    this.positionX = this.positionX + 3; 
+    this.positionX = this.positionX + 3;
     this.domElement.style.left = this.positionX + "vh";
     console.log(this.positionX);
   }
@@ -183,12 +180,12 @@ setInterval(() => {
 document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft") {
     brain.moveLeft();
-} else if (event.code === "ArrowRight") {
+  } else if (event.code === "ArrowRight") {
     brain.moveRight();
   }
 });
 
-// Score Count
+// score Count
 function earnPoints(points) {
   score += points;
   console.log(score);
