@@ -1,3 +1,5 @@
+let score = 0;
+
 class Brain {
   constructor() {
     this.width = 25;
@@ -32,12 +34,12 @@ class Brain {
 
   // when brain moves to left/right
   moveLeft() {
-    this.positionX = this.positionX - 1; //modify the position
+    this.positionX = this.positionX - 3; //modify the position
     this.domElement.style.left = this.positionX + "vh";
     console.log(this.positionX);
   }
   moveRight() {
-    this.positionX = this.positionX + 1; //modify the position
+    this.positionX = this.positionX + 3; //modify the position
     this.domElement.style.left = this.positionX + "vh";
     console.log(this.positionX);
   }
@@ -138,7 +140,6 @@ class scoreDisplay {
     }
 }
 
-
 // instance of class Brain - i create new div in browser when i create a new class brain
 const brain = new Brain();
 const obstaclesArr = []; //will store instances of the class obstacle
@@ -165,17 +166,18 @@ setInterval(() => {
     ) {
         if (obstaclesInstance.name === "ReferenceError" || obstaclesInstance.name === "SyntaxError") {
             loosePoints(5);
-            obstaclesInstance.domElement.remove();
+            obstaclesInstance.removeElement();
             obstaclesArr.splice(index, 1);
-            return updateScore();
+            updateScore();
           } else {
             earnPoints(5);
-            obstaclesInstance.domElement.remove();
+            obstaclesInstance.removeElement();
             obstaclesArr.splice(index, 1);
-            return updateScore();
+            updateScore();
           }
       console.log(obstaclesArr);
     }
+    endGame();
   });
 }, 100);
 
@@ -189,8 +191,6 @@ document.addEventListener("keydown", (event) => { //if user presses arrow left w
 });
 
 // Score Count
-let score = 0;
-
 function earnPoints(points) {
   score += points;
   console.log(score);
@@ -207,13 +207,15 @@ function updateScore() {
   document.getElementById("score").innerHTML = score;
 }
 
-// End Game
-let win = "win"
+const winnerPage = document.querySelector("#winnerPage");
+const scoreHtml = document.querySelector("#score");
+const boardGame =  document.querySelector("#board");
 
-/* function endGame(){
-    if (score === 100){
-        alert "Congratulations! You can code"
-        return win
+function endGame(){
+   console.log(boardGame);
+    console.log(winnerPage);
+    if (score === 5){
+        winnerPage.style.display = "block"
+        boardGame.style.display = "none"
     }
 }
-*/
