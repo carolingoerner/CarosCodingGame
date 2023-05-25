@@ -1,7 +1,7 @@
 class Brain {
   constructor() {
-    this.width = 29;
-    this.height = 30;
+    this.width = 25;
+    this.height = 25;
     this.positionX = 20 - this.width / 2;
     this.positionY = 0;
     
@@ -22,6 +22,7 @@ class Brain {
     this.domElement.style.left = this.positionX + "vw";
     this.domElement.style.bottom = this.positionX + "vh";
     this.domElement.style.position = "absolute";
+    this.domElement.style.backgroundSize = "contain";
 
     // append to the dom:parentElm.appendChild()
 
@@ -45,8 +46,8 @@ class Brain {
 class Obstacle {
   constructor() {
     this.width = 10;
-    this.height = 10;
-    this.positionX = Math.random() * 90;
+    this.height = 8;
+    this.positionX = Math.random() * 80;
     this.positionY = 100;
     this.imageArray = [
       "./images/ReferenceError.png",
@@ -96,7 +97,6 @@ class Obstacle {
 
   createDomElement() {
     this.domElement = document.createElement("div");
-    // add content or modify
     this.domElement.className = "obstacle";
     this.domElement.style.width = this.width + "vw";
     this.domElement.style.height = this.height + "vh";
@@ -111,14 +111,38 @@ class Obstacle {
     parentElm.appendChild(this.domElement);
   }
   moveDown() {
-    this.positionY = this.positionY - 1; // if faster change it to -5
+    this.positionY = this.positionY - 1.5; // if faster change it to -5
     this.domElement.style.bottom = this.positionY + "vh";
   }
 }
+class scoreDisplay {
+    constructor(){
+    this.width = 200;
+    this.height = 100;
+    this.positionX = 20;
+    this.positionY = 20;
+    
+    this.domElement = null;
+    this.createDomElement();
+   }
+   
+   createDomElement() {
+     this.domElement = document.createElement("div");
+     this.domElement.id = "score";
+     this.domElement.style.width = this.width + "px";
+     this.domElement.style.height = this.height + "px";
+     this.domElement.style.left = this.positionX + "px";
+     this.domElement.style.top = this.positionY + "px";
+     const parentElm = document.getElementById("board");
+     parentElm.appendChild(this.domElement);
+    }
+}
+
 
 // instance of class Brain - i create new div in browser when i create a new class brain
 const brain = new Brain();
 const obstaclesArr = []; //will store instances of the class obstacle
+const scoreTable = new scoreDisplay; 
 
 // create new Obstacle
 setInterval(() => {
@@ -166,6 +190,7 @@ document.addEventListener("keydown", (event) => { //if user presses arrow left w
 
 // Score Count
 let score = 0;
+
 function earnPoints(points) {
   score += points;
   console.log(score);
@@ -181,3 +206,14 @@ function updateScore() {
   // Update the score element in the HTML with the new value
   document.getElementById("score").innerHTML = score;
 }
+
+// End Game
+let win = "win"
+
+/* function endGame(){
+    if (score === 100){
+        alert "Congratulations! You can code"
+        return win
+    }
+}
+*/
