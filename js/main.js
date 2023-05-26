@@ -3,7 +3,7 @@ let score = 0;
 class Brain {
   constructor() {
     this.width = 25;
-    this.height = 25;
+    this.height = 33;
     this.positionX = 20 - this.width / 2;
     this.positionY = 0;
 
@@ -19,9 +19,9 @@ class Brain {
     this.domElement.style.width = this.width + "vw";
     this.domElement.style.height = this.height + "vh";
     this.domElement.style.left = this.positionX + "vw";
-    this.domElement.style.bottom = this.positionX + "vh";
+    this.domElement.style.bottom = this.positionY + "vh";
     this.domElement.style.position = "absolute";
-    this.domElement.style.backgroundSize = "contain";
+    this.domElement.style.backgroundSize = "cover";
 
     const parentElm = document.getElementById("board");
     parentElm.appendChild(this.domElement);
@@ -29,12 +29,12 @@ class Brain {
 
   moveLeft() {
     this.positionX = this.positionX - 3;
-    this.domElement.style.left = this.positionX + "vh";
+    this.domElement.style.left = this.positionX + "vw";
     console.log(this.positionX);
   }
   moveRight() {
     this.positionX = this.positionX + 3;
-    this.domElement.style.left = this.positionX + "vh";
+    this.domElement.style.left = this.positionX + "vw";
     console.log(this.positionX);
   }
 }
@@ -63,7 +63,7 @@ class Obstacle {
       "./images/SyntaxError.png",
     ];
     this.domElement = null;
-    this.randomIndex = Math.round(Math.random() * this.imageArray.length);
+    this.randomIndex = Math.floor(Math.random() * this.imageArray.length);
     this.namesArray = [
       "ReferenceError",
       "let",
@@ -75,7 +75,7 @@ class Obstacle {
       "head",
       "if",
       "elseif",
-      "curlyBrackets",
+      "curlybrackets",
       "const",
       "constructor",
       "createDomElement",
@@ -96,7 +96,7 @@ class Obstacle {
     this.domElement.style.width = this.width + "vw";
     this.domElement.style.height = this.height + "vh";
     this.domElement.style.left = this.positionX + "vw";
-    this.domElement.style.bottom = this.positionX + "vh";
+    this.domElement.style.bottom = this.positionY + "vh";
     this.domElement.style.position = "absolute";
 
     this.domElement.style.backgroundImage = `url('./images/${this.name}.png')`;
@@ -106,7 +106,7 @@ class Obstacle {
     parentElm.appendChild(this.domElement);
   }
   moveDown() {
-    this.positionY = this.positionY - 1.5; // if faster change it to -5
+    this.positionY = this.positionY - 1; // if faster change it to -5
     this.domElement.style.bottom = this.positionY + "vh";
   }
 }
@@ -174,7 +174,7 @@ setInterval(() => {
     }
     endGame();
   });
-}, 100);
+}, 50);
 
 // when user presses tab brain moves
 document.addEventListener("keydown", (event) => {
